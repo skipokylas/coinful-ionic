@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-buttons slot="primary">
+      <ion-button color="medium">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <img src="../../../assets/icon/favicon.png" alt="" style="width: 25px">
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button color="primary">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark" force-overscroll="true" style="margin-top: 40px;">
+  <ion-list>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-label>Primary Note</ion-label>
+        <ion-note slot="end" color="primary">99</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Secondary Note</ion-label>
+        <ion-note slot="end" color="secondary">99</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Tertiary Note</ion-label>
+        <ion-note slot="end" color="tertiary">99</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Success Note</ion-label>
+        <ion-note slot="end" color="success">99</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Warning Note</ion-label>
+        <ion-note slot="end" color="warning">99</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Danger Note</ion-label>
+        <ion-note slot="end" color="danger">99</ion-note>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+
+
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="schedule">
+      <ion-icon name="calendar"></ion-icon>
+      <ion-label>Schedule</ion-label>
+      <ion-badge>6</ion-badge>
+    </ion-tab-button>
+
+    <ion-tab-button tab="speakers">
+      <ion-icon name="contacts"></ion-icon>
+      <ion-label>Speakers</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="map">
+      <ion-icon name="map"></ion-icon>
+      <ion-label>Map</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
