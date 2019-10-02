@@ -6,7 +6,7 @@ import { DataService } from '../services/data.service';
   templateUrl: 'coins.page.html',
   styleUrls: ['coins.page.scss'],
 })
-export class HomePage {
+export class CoinPage {
   constructor(private dataService: DataService) { }
 
   ionViewDidEnter() {

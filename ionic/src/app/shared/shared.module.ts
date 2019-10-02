@@ -1,34 +1,15 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-// import { CommonModule } from '@angular/common';
-// import { FormsModule } from '@angular/forms';
-// import { IonicModule } from '@ionic/angular';
-
-// import { HeaderComponent, LoaderComponent, MovieComponent, ViewMoreComponent } from './components';
-// import { RouterModule } from '@angular/router';
-// import { ScrollDirective } from './directives';
+import { HeaderComponent, TabsComponent } from './components';
 
 @NgModule({
     declarations: [
-        // HeaderComponent,
-        // LoaderComponent,
-        // MovieComponent,
-        // ViewMoreComponent,
-        // ScrollDirective
+        HeaderComponent,
+        TabsComponent
     ],
-    imports: [
-        // CommonModule,
-        // RouterModule,
-        // FormsModule,
-        // IonicModule
-    ],
+    imports: [],
     exports: [
-        // HeaderComponent,
-        // LoaderComponent,
-        // MovieComponent,
-        // ViewMoreComponent,
-        // ScrollDirective,
-        // FormsModule,
-        // IonicModule
+        HeaderComponent,
+        TabsComponent
     ],
     schemas: [NO_ERRORS_SCHEMA]
 })

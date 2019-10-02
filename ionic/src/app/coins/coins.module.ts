@@ -4,20 +4,22 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { HomePage } from './coins.page';
+import { CoinPage } from './coins.page';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    SharedModule,
     RouterModule.forChild([
       {
         path: '',
-        component: HomePage
+        component: CoinPage
       }
     ])
   ],
-  declarations: [HomePage]
+  declarations: [CoinPage]
 })
 export class HomePageModule { }
