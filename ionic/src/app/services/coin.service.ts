@@ -6,14 +6,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+export class CoinService {
   result: any;
   constructor(private http: HttpClient) { }
-  getCoins(coins): Observable<any> {
-    let coinList = '';
-    coinList = coins.join();
+
+  getCoins(): Observable<any> {
     return this.http
-      .get(`https://min-api.cryptocompare.com/data/pricemulti?fsyms=${coinList}&tsyms=USD`)
-      .pipe(map(result => (this.result = result)));
+      .get('http://localhost:3000/api/cryptocurrency/listings/latest');
   }
 }

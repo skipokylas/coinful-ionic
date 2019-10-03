@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { DataService } from '../services/data.service';
+import { CoinService } from '../services/coin.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-coins',
@@ -7,10 +8,12 @@ import { DataService } from '../services/data.service';
   styleUrls: ['coins.page.scss'],
 })
 export class CoinPage {
-  constructor(private dataService: DataService) { }
+  coins$: Observable<any>;
+
+  constructor(private coinService: CoinService) { }
 
   ionViewDidEnter() {
-    this.dataService.getCoins(['BTC', 'ETC', 'MIOTA']).subscribe(console.log);
+    this.coins$ = this.coinService.getCoins();
   }
 
 }
