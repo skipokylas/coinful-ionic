@@ -11,7 +11,7 @@ module.exports.listingsLatest = async (req, res) => {
         };
 
         rp(requestOptions).then(response => {
-            res.status(200).json(response);
+            res.status(200).json(response.data);
             console.log('API call response:', response);
         }).catch((err) => {
             console.log('API call error:', err.message);
