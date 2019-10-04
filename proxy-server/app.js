@@ -1,16 +1,17 @@
-
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
+const rs = require('./request-options/request-options');
 const cryptocurrencyRoutes = require('./routes/cryptocurrency.route');
+
+const cache = require('./cache');
 
 const app = express();
 
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 app.use(cors());
+
+cache.init(rs.listingsLatest);
 
 app.use('/api/cryptocurrency', cryptocurrencyRoutes);
 
