@@ -1,12 +1,18 @@
-const express = require('express');
+
 const cors = require('cors');
 const morgan = require('morgan');
 const rs = require('./request-options/request-options');
 const cryptocurrencyRoutes = require('./routes/cryptocurrency.route');
 
-const cache = require('./cache');
+const app = require('express')();
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 
-const app = express();
+io.on('connection', function (socket) {
+    console.log('a user connected');
+});
+
+const cache = require('./cache');
 
 app.use(morgan('dev'));
 app.use(cors());
@@ -24,4 +30,4 @@ app.get('*', (req, res) => {
 });
 
 
-module.exports = app;
+module.exports = server;
