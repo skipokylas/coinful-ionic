@@ -5,7 +5,7 @@
     <ion-item-sliding>
       <ion-item *ngFor="let coin of coins$ | async">
         <ion-label>{{coin.name}}</ion-label>
-        <ion-note slot="end" color="primary">${{coin.quote.USD.price.toFixed(5)}}</ion-note>
+        <ion-note slot="end" color="primary">${{coin.price}}</ion-note>
       </ion-item>
     </ion-item-sliding>
   </ion-list>
