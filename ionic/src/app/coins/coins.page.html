@@ -8,17 +8,21 @@
         <div slot="start" class="coin-info-block">
           <div class="coin-icon-block">
             <img [src]="coin.logo_url">
-            <div class="text text__symbol">{{coin.symbol}}</div>
+            <div class="text text__size--normal">{{coin.symbol}}</div>
           </div>
-          <div class="text text__name">{{coin.name}}</div>
+          <div class="text text__size--small">{{coin.name}}</div>
         </div>
 
         <ion-label class="coin-chart-block">
-          <h2>${{coin.price.toString().slice(0,7)}}</h2>
+          <div class="text text__size--large">${{coin.price.toString().slice(0,7)}}</div>
           <h3>I'm a big deal</h3>
-          <!-- <p>Listen, I've had a pretty messed up day...</p>  -->
         </ion-label>
-        <ion-note slot="end" color="primary" class="coin-price-change-block">${{coin.price.toString().slice(0,7)}}</ion-note>
+        <ion-note slot="end" color="primary" class="coin-price-change-block">
+          <div class="text text__size--extra-small">{{(coin['1h'].price_change_pct*100).toString().slice(0,4)}}% 1H</div>
+          <div class="text text__size--extra-small">{{(coin['1d'].price_change_pct*100).toString().slice(0,4)}}% 1D</div>
+          <div class="text text__size--extra-small">{{(coin['7d'].price_change_pct*100).toString().slice(0,4)}}% 7D</div>
+          <div class="text text__size--extra-small">{{coin.market_cap.toString().slice(0,4)}} Cap</div>
+        </ion-note>
       </ion-item>
     </ion-item-sliding>
   </ion-list>

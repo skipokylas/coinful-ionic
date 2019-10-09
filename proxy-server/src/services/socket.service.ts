@@ -2,13 +2,13 @@ import io from 'socket.io';
 import { Server } from 'http';
 import { Store } from './cache.service';
 
-const store = new Store('https://api.nomics.com/v1/currencies/ticker?key=b297be749ce2b84de83d68336e851ad5');
+const store = new Store('https://api.nomics.com/v1/currencies/ticker?key=b297be749ce2b84de83d68336e851ad5&interval=1h,1d,7d,30d');
 
 const socket = (server: Server) => {
     const socketServer = io(server);
 
     socketServer.on('connection', (socket) => {
-        let itemsNumber = 10;
+        let itemsNumber = 20;
 
         socket.emit('cryptoupdate', store.get(itemsNumber));
 

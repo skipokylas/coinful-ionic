@@ -4,11 +4,33 @@ img {
 }
 
 .text {
-    &__name{
-        font-size: .7rem;
+    &__size {
+
+        &--extra-small {
+            font-size: .6rem;
+        }
+        &--small {
+            font-size: .7rem;
+        }
+        &--normal {
+            font-size: .8rem;
+        }
+        &--large {
+            font-size: .9rem;
+        }
+        &--largest {
+            font-size: 1rem;
+        }
     }
-    &__symbol {
-        font-size: .8rem;
+
+    &__weight {
+
+        &--normal {
+            font-weight: 600;
+        }
+        &--bold {
+            font-weight: 900;
+        }
     }
 }
 
@@ -20,7 +42,7 @@ img {
         display: flex;
         flex-direction: row;
         align-items: center;
-        
+
         div {
             padding-left: 10px;
         }
@@ -35,4 +57,6 @@ img {
 
 .coin-price-change-block {
     margin-left: 0px;
+    display: flex;
+    flex-direction: column;
 }
