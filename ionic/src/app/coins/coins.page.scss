@@ -1,1 +1,38 @@
+img {
+    height: 30px;
+    min-width: 30px;
+}
 
+.text {
+    &__name{
+        font-size: .7rem;
+    }
+    &__symbol {
+        font-size: .8rem;
+    }
+}
+
+.coin-info-block {
+    min-width: 80px;
+    margin-right: 0px;
+
+    .coin-icon-block {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        
+        div {
+            padding-left: 10px;
+        }
+    }
+}
+
+
+
+.coin-chart-block {
+    text-align: center;
+}
+
+.coin-price-change-block {
+    margin-left: 0px;
+}

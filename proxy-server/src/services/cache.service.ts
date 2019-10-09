@@ -12,7 +12,7 @@ export class Store {
     }
 
     private runAutoUpdate(): void {
-        interval(10000).pipe(switchMap(() => this.getCoinsInfo$()))
+        interval(100000).pipe(switchMap(() => this.getCoinsInfo$()))
             .subscribe(this.initCoins.bind(this));
     }
 

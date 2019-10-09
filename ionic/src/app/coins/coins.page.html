@@ -1,11 +1,24 @@
 <app-header></app-header>
 
 <ion-content color="dark" force-overscroll="true" style="margin-top: 40px;">
+
   <ion-list>
     <ion-item-sliding>
       <ion-item *ngFor="let coin of coins$ | async">
-        <ion-label>{{coin.name}}</ion-label>
-        <ion-note slot="end" color="primary">${{coin.price}}</ion-note>
+        <div slot="start" class="coin-info-block">
+          <div class="coin-icon-block">
+            <img [src]="coin.logo_url">
+            <div class="text text__symbol">{{coin.symbol}}</div>
+          </div>
+          <div class="text text__name">{{coin.name}}</div>
+        </div>
+
+        <ion-label class="coin-chart-block">
+          <h2>${{coin.price.toString().slice(0,7)}}</h2>
+          <h3>I'm a big deal</h3>
+          <!-- <p>Listen, I've had a pretty messed up day...</p>  -->
+        </ion-label>
+        <ion-note slot="end" color="primary" class="coin-price-change-block">${{coin.price.toString().slice(0,7)}}</ion-note>
       </ion-item>
     </ion-item-sliding>
   </ion-list>
