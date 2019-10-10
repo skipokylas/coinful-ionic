@@ -13,23 +13,23 @@ const socket = (server: Server) => {
     socketServer.on('connection', (socket) => {
         let itemsNumber = 20;
 
-        socket.emit('cryptoupdate', store.getCoinsInfo(itemsNumber));
+        socket.emit('cryptoupdated', store.getCoinsInfo(itemsNumber));
 
         store.coinsUpdated$.subscribe((status) => {
             if (status) {
-                socket.emit('cryptoupdate', store.getCoinsInfo(itemsNumber));
+                socket.emit('cryptoupdated', store.getCoinsInfo(itemsNumber));
             }
         });
 
         store.chartsUpdated$.subscribe((status) => {
             if (status) {
-                socket.emit('chartsupdate', store.getChartsInfo(itemsNumber));
+                socket.emit('chartsupdated', store.getChartsInfo(itemsNumber))
             }
         });
 
         socket.on('getmore', () => {
             itemsNumber += 10;
-            socket.emit('cryptoupdate', store.getCoinsInfo(itemsNumber));
+            socket.emit('cryptoupdated', store.getCoinsInfo(itemsNumber));
         })
     });
 
