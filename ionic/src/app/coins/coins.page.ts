@@ -11,15 +11,18 @@ import { SocketService } from '../services/socket.service';
 })
 export class CoinPage {
   coins$: Observable<any>;
+  charts$: Observable<any>;
 
-  constructor(private coinService: CoinService, private socketService: SocketService) {
-    this.coins$ = this.socketService.listen('cryptoupdate').pipe(
-      map((response: any) => JSON.parse(response))
-    );
-  }
+  constructor(private coinService: CoinService, private socketService: SocketService) { }
 
   ionViewDidEnter() {
-    // this.coins$ = this.coinService.getCoins();
+    this.coins$ = this.socketService.listen('cryptoupdated').pipe(
+      map((response: any) => JSON.parse(response))
+    );
+
+    this.charts$ = this.socketService.listen('chartsupdated').pipe(
+      map((response: any) => JSON.parse(response))
+    );
   }
 
 }

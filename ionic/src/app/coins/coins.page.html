@@ -18,9 +18,15 @@
           <h3>I'm a big deal</h3>
         </ion-label>
         <ion-note slot="end" color="primary" class="coin-price-change-block">
-          <div class="text text__size--extra-small">{{(coin['1h'].price_change_pct*100).toString().slice(0,4)}}% 1H</div>
-          <div class="text text__size--extra-small">{{(coin['1d'].price_change_pct*100).toString().slice(0,4)}}% 1D</div>
-          <div class="text text__size--extra-small">{{(coin['7d'].price_change_pct*100).toString().slice(0,4)}}% 7D</div>
+          <div class="text text__size--extra-small">
+            {{coin['1h'] ? (coin['1h'].price_change_pct*100).toString().slice(0,4) : 'und'}}% 1H
+          </div>
+          <div class="text text__size--extra-small">
+            {{coin['1d'] ? (coin['1d'].price_change_pct*100).toString().slice(0,4): 'und'}}% 1D
+          </div>
+          <div class="text text__size--extra-small">
+            {{coin['1h'] ? (coin['7d'].price_change_pct*100).toString().slice(0,4) : 'und'}}% 7D
+          </div>
           <div class="text text__size--extra-small">{{coin.market_cap.toString().slice(0,4)}} Cap</div>
         </ion-note>
       </ion-item>
