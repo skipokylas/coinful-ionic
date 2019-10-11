@@ -1,15 +1,16 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { HeaderComponent, TabsComponent } from './components';
+import { HeaderComponent, ChartComponent } from './components';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
     declarations: [
         HeaderComponent,
-        TabsComponent
+        ChartComponent
     ],
-    imports: [],
+    imports: [ChartsModule],
     exports: [
         HeaderComponent,
-        TabsComponent
+        ChartComponent
     ],
     schemas: [NO_ERRORS_SCHEMA]
 })

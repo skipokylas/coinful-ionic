@@ -15,7 +15,9 @@
 
         <ion-label class="coin-chart-block">
           <div class="text text__size--large">${{coin.price.toString().slice(0,7)}}</div>
-          <h3>I'm a big deal</h3>
+
+          <app-chart [chartData]="true"></app-chart>
+
         </ion-label>
         <ion-note slot="end" color="primary" class="coin-price-change-block">
           <div class="text text__size--extra-small">
@@ -33,4 +35,3 @@
     </ion-item-sliding>
   </ion-list>
 </ion-content>
-<app-tabs></app-tabs>

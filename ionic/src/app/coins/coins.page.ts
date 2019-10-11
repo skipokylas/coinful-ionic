@@ -13,7 +13,7 @@ export class CoinPage {
   coins$: Observable<any>;
   charts$: Observable<any>;
 
-  constructor(private coinService: CoinService, private socketService: SocketService) { }
+  constructor(private socketService: SocketService) { }
 
   ionViewDidEnter() {
     this.coins$ = this.socketService.listen('cryptoupdated').pipe(
