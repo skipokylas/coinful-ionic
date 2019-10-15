@@ -1,4 +1,4 @@
-import { Observable, BehaviorSubject, from, interval } from 'rxjs';
+import { Observable, BehaviorSubject, from, interval, zip } from 'rxjs';
 import { map, switchMap, first } from 'rxjs/operators';
 import axios from 'axios';
 import { TInfo } from '../models/models';
@@ -7,7 +7,6 @@ export class Store {
     private coinsInfo: Array<any> = [];
     private chartsInfo: Array<any> = [];
     public coinsUpdated$ = new BehaviorSubject<boolean>(false);
-    public chartsUpdated$ = new BehaviorSubject<boolean>(false);
 
     constructor(private url: string, private url2: string) {
         this.getInfo$(this.url).pipe(
@@ -25,17 +24,14 @@ export class Store {
     }
 
     private runAutoUpdate(): void {
-        interval(15000).pipe(switchMap(() => this.getInfo$(this.url)))
-            .subscribe((coinsInfoRes) => {
-                this.initData(coinsInfoRes, 'coinsInfo');
-                this.coinsUpdated$.next(true);
-            });
-
-        interval(15000).pipe(switchMap(() => this.getInfo$(this.url2)))
-            .subscribe((chartsInfoRes) => {
-                this.initData(chartsInfoRes, 'chartsInfo');
-                this.chartsUpdated$.next(true);
-            });
+        zip(
+            interval(150000).pipe(switchMap(() => this.getInfo$(this.url))),
+            interval(150000).pipe(switchMap(() => this.getInfo$(this.url2)))
+        ).subscribe((result => {
+            this.initData(result[0], 'coinsInfo');
+            this.initData(result[1], 'chartsInfo');
+            this.coinsUpdated$.next(true);
+        }))
     }
 
     private getInfo$(url: string): Observable<any> {
@@ -47,11 +43,11 @@ export class Store {
     }
 
     public getCoinsInfo(number: number): string {
-        return JSON.stringify(this.coinsInfo.slice(0, number));
-    }
+        const info = this.coinsInfo.slice(0, number).map((coin) => {
+            coin.chart = this.chartsInfo.find((chartInfo) => chartInfo.currency === coin.id);
+            return coin
+        });
 
-    public getChartsInfo(number: number): string {
-        const coinPortion = this.coinsInfo.slice(0, number).map((coin) => coin.id);
-        return JSON.stringify(this.chartsInfo.filter((chartsItem: any) => coinPortion.includes(chartsItem.currency)));
+        return JSON.stringify(info);
     }
 }

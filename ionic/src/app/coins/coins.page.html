@@ -1,8 +1,8 @@
 <app-header></app-header>
 
-<ion-content color="dark" force-overscroll="true" style="margin-top: 40px;">
+<ion-content color="dark" force-overscroll="true">
 
-  <ion-list>
+  <ion-list lines="none" class="ion-no-padding">
     <ion-item-sliding>
       <ion-item *ngFor="let coin of coins$ | async">
         <div slot="start" class="coin-info-block">
@@ -16,7 +16,7 @@
         <ion-label class="coin-chart-block">
           <div class="text text__size--large">${{coin.price.toString().slice(0,7)}}</div>
 
-          <app-chart [chartData]="true"></app-chart>
+          <app-chart [chartData]="coin.chart.prices" [chartLabels]="coin.chart.timestamps"></app-chart>
 
         </ion-label>
         <ion-note slot="end" color="primary" class="coin-price-change-block">
@@ -27,7 +27,7 @@
             {{coin['1d'] ? (coin['1d'].price_change_pct*100).toString().slice(0,4): 'und'}}% 1D
           </div>
           <div class="text text__size--extra-small">
-            {{coin['1h'] ? (coin['7d'].price_change_pct*100).toString().slice(0,4) : 'und'}}% 7D
+            {{coin['7d'] ? (coin['7d'].price_change_pct*100).toString().slice(0,4) : 'und'}}% 7D
           </div>
           <div class="text text__size--extra-small">{{coin.market_cap.toString().slice(0,4)}} Cap</div>
         </ion-note>

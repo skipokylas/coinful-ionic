@@ -1,42 +1,17 @@
-img {
-    height: 30px;
-    min-width: 30px;
-}
-
-.text {
-    &__size {
-
-        &--extra-small {
-            font-size: .6rem;
-        }
-        &--small {
-            font-size: .7rem;
-        }
-        &--normal {
-            font-size: .8rem;
-        }
-        &--large {
-            font-size: .9rem;
-        }
-        &--largest {
-            font-size: 1rem;
-        }
-    }
-
-    &__weight {
-
-        &--normal {
-            font-weight: 600;
-        }
-        &--bold {
-            font-weight: 900;
-        }
-    }
+ion-item {
+    --ion-background-color: #11151b;
+    border-bottom: 1px solid #10151ae3;
+    color: white
 }
 
 .coin-info-block {
     min-width: 80px;
     margin-right: 0px;
+
+    img {
+        height: 30px;
+        min-width: 30px;
+    }
 
     .coin-icon-block {
         display: flex;
@@ -48,8 +23,6 @@ img {
         }
     }
 }
-
-
 
 .coin-chart-block {
     text-align: center;

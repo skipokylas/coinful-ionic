@@ -1,3 +1,5 @@
-<div id="chart-container">
-    <canvas #myCanvas id="canvas" baseChart [chartType]="chartType" [datasets]="chartDataTest" [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions"></canvas>
+<div class="chart-wrapper">
+    <div class="chart-container">
+        <canvas #myCanvas id="canvas" baseChart [chartType]="chartType" [datasets]="[{data: chartData}]" [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions"></canvas>
+    </div>
 </div>

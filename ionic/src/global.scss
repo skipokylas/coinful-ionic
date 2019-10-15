@@ -24,3 +24,34 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.text {
+    &__size {
+
+        &--extra-small {
+            font-size: .6rem;
+        }
+        &--small {
+            font-size: .7rem;
+        }
+        &--normal {
+            font-size: .8rem;
+        }
+        &--large {
+            font-size: .9rem;
+        }
+        &--largest {
+            font-size: 1rem;
+        }
+    }
+
+    &__weight {
+
+        &--normal {
+            font-weight: 600;
+        }
+        &--bold {
+            font-weight: 900;
+        }
+    }
+}
