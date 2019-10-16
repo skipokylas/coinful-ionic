@@ -10,19 +10,22 @@ import { SocketService } from '../services/socket.service';
   styleUrls: ['coins.page.scss'],
 })
 export class CoinPage {
-  coins$: Observable<any>;
-  charts$: Observable<any>;
+  coins: any;
 
   constructor(private socketService: SocketService) { }
 
   ionViewDidEnter() {
-    this.coins$ = this.socketService.listen('cryptoupdated').pipe(
+    this.socketService.listen('cryptoupdated').pipe(
       map((response: any) => JSON.parse(response))
-    );
+    ).subscribe((res => { console.log(res); this.coins = res;}));
+  }
 
-    this.charts$ = this.socketService.listen('chartsupdated').pipe(
-      map((response: any) => JSON.parse(response))
-    );
+  loadData(event) {
+
+    setTimeout(() => {
+      this.socketService.socket.emit('getmore', null);
+      event.target.complete();
+    }, 500);
   }
 
 }

@@ -4,7 +4,7 @@
 
   <ion-list lines="none" class="ion-no-padding">
     <ion-item-sliding>
-      <ion-item *ngFor="let coin of coins$ | async">
+      <ion-item *ngFor="let coin of coins">
         <div slot="start" class="coin-info-block">
           <div class="coin-icon-block">
             <img [src]="coin.logo_url">
@@ -16,7 +16,7 @@
         <ion-label class="coin-chart-block">
           <div class="text text__size--large">${{coin.price.toString().slice(0,7)}}</div>
 
-          <app-chart [chartData]="coin.chart.prices" [chartLabels]="coin.chart.timestamps"></app-chart>
+          <app-chart [chartData]="coin.chart ? coin.chart.prices : []" [chartLabels]="coin.chart ? coin.chart.timestamps : []"></app-chart>
 
         </ion-label>
         <ion-note slot="end" color="primary" class="coin-price-change-block">
@@ -34,4 +34,11 @@
       </ion-item>
     </ion-item-sliding>
   </ion-list>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
