@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { CoinService } from '../services/coin.service';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { SocketService } from '../services/socket.service';
 
