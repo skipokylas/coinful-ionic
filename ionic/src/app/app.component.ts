@@ -12,6 +12,11 @@ export class AppComponent {
 
   public appPages = [
     {
+      title: 'Coins',
+      url: '',
+      icon: 'home'
+    },
+    {
       title: 'Favorites',
       url: '/favorites',
       icon: 'star-outline'

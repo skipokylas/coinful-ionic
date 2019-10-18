@@ -12,7 +12,6 @@ export class Store {
     private responseSubject = new BehaviorSubject<boolean>(true);
 
     constructor() {
-
         this.responseSubject.pipe(
             delay(100000),
             switchMap(() =>  zip(this.getInfo$(config.coinsURL()).pipe(take(500)),this.getInfo$(config.chartsURL())))
@@ -21,7 +20,6 @@ export class Store {
             this.initData(result[1], 'chartsInfo');
             this.responseSubject.next(true);
             this.coinsUpdated$.next(true);
-            console.log('geg!!', config.chartsURL())
         });
     }
 
@@ -33,7 +31,7 @@ export class Store {
         this[resultName] = result;
     }
 
-    public getCoinsInfo(number: number): string {
+    public getCoinsInfo(number: number = 20): string {
         const info = this.coinsInfo.slice(0, number).map((coin) => {
             coin.chart = this.chartsInfo.find((chartInfo) => chartInfo.currency === coin.id);
             return coin

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { SocketService } from '../services/socket.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-coins',
@@ -8,20 +9,22 @@ import { SocketService } from '../services/socket.service';
   styleUrls: ['coins.page.scss'],
 })
 export class CoinPage {
-  coins: any;
 
-  constructor(private socketService: SocketService) { }
+  coins$: Observable<any>;
+
+  constructor(private socketService: SocketService) {
+    this.coins$ = this.socketService.listen('cryptoupdated').pipe(
+      map((response: any) => JSON.parse(response))
+    )
+  }
 
   ionViewDidEnter() {
-    this.socketService.listen('cryptoupdated').pipe(
-      map((response: any) => JSON.parse(response))
-    ).subscribe((res => { console.log(res); this.coins = res;}));
+    this.socketService.socket.emit('getcoins', null);
   }
 
   loadData(event) {
-
     setTimeout(() => {
-      this.socketService.socket.emit('getmore', null);
+      this.socketService.socket.emit('getmorecoins', null);
       event.target.complete();
     }, 500);
   }

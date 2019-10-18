@@ -11,15 +11,17 @@ const socket = (server: Server) => {
     socketServer.on('connection', (socket) => {
         let itemsNumber = 20;
 
-        setTimeout(() => { socket.emit('cryptoupdated', store.getCoinsInfo(itemsNumber))}, 2000);
-
         store.coinsUpdated$.subscribe((status) => {
             if (status) {
                 socket.emit('cryptoupdated', store.getCoinsInfo(itemsNumber));
             }
         });
 
-        socket.on('getmore', () => {
+        socket.on('getcoins', () => {
+            socket.emit('cryptoupdated', store.getCoinsInfo());
+        })
+
+        socket.on('getmorecoins', () => {
             itemsNumber += 10;
             socket.emit('cryptoupdated', store.getCoinsInfo(itemsNumber));
         })
